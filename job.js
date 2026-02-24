@@ -56,3 +56,15 @@ function toggle(id) {
     }
   }
 }
+
+cardsContainer.addEventListener("click", function(e) {
+  const parentCard = e.target.closest(".job-card");
+  if (!parentCard) return;
+
+  if (e.target.classList.contains("fa-trash-can")) {
+    interviewCount = interviewCount.filter(c => c !== parentCard);
+    rejectedCount = rejectedCount.filter(c => c !== parentCard);
+    parentCard.remove();
+    count();
+    return;
+  }
