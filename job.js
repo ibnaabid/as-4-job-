@@ -68,3 +68,25 @@ cardsContainer.addEventListener("click", function(e) {
     count();
     return;
   }
+
+    if (e.target.classList.contains("btn1")) {
+    if (!interviewCount.includes(parentCard)) {
+      interviewCount.push(parentCard);
+      parentCard.dataset.status = "interview";
+    }
+    rejectedCount = rejectedCount.filter(c => c !== parentCard);
+    parentCard.querySelector(".btn").innerText = "Applied";
+    count();
+  }
+
+  if (e.target.classList.contains("btn2")) {
+    if (!rejectedCount.includes(parentCard)) {
+      rejectedCount.push(parentCard);
+      parentCard.dataset.status = "rejected";
+    }
+    interviewCount = interviewCount.filter(c => c !== parentCard);
+    parentCard.querySelector(".btn").innerText = "Rejected";
+    count();
+  }
+});
+count()
